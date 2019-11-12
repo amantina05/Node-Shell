@@ -1,23 +1,27 @@
-// // output a prompt
-// process.stdout.write('prompt > ')
+const pwd = require ('./pwd.js')
 
-// // stdin 'data' event fires after a user types in a line
-// process.stdin.on('data', (data) => {
-//   const cmd = data.toString().trim()
+const ls = require ('./ls.js')
 
-//   process.stdout.write('You typed: ' + cmd)
-//   process.stdout.write('\nprompt > ')
-// })
+const cat = require ('./cat.js')
 
-const exportsFromPwd = require ('./pwd.js')
+// output a prompt
+process.stdout.write('prompt > ')
+// stdin 'data' event fires after a user types in a line
+process.stdin.on('data', (data) => {
+  // const cmd = data.toString().trim()
 
-exportsFromPwd()
+  // process.stdout.write('You typed: ' + cmd)
+  // process.stdout.write('\nprompt > ')
+  //input should be a string containing the name of the command & filename
+  const cmd = data.toString().trim().split(' ')
+  if (cmd[0] === 'pwd') {
+    pwd();
+  }
+  if(cmd[0] === 'ls'){
+    ls();
+  }
+  if(cmd[0] === 'cat'){
+    cat([...cmd.slice(1)])
+  }
 
-
-const exportsFromLs = require ('./ls.js')
-console.log(exportsFromLs)
-// exportsFromLs ()
-
-// const fs = require ('fs')
-
-// fs()
+})

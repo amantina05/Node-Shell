@@ -1,6 +1,5 @@
-module.exports = function () {
+const pwd = () => {
   // console.log('works')
-
 
 //   // output a prompt
 // process.stdout.write('prompt > ')
@@ -12,4 +11,9 @@ module.exports = function () {
 //   process.stdout.write('You typed: ' + cmd)
 //   process.stdout.write('\nprompt > ')
 // })
+process.stdout.write(process.cwd())
+process.stdout.write('\nprompt > ')
 }
+
+
+module.exports = pwd

@@ -1,15 +1,15 @@
 const fs = require ('fs')
 
-
-module.exports =
-
 //files will be an array pf filenames
-fs.readdir('./', 'utf8', (err, files) => {
+function ls () {
+  fs.readdir('./', 'utf8', (err, files) => {
   if (err) {
     throw err
   } else {
     process.stdout.write(files.join('\n'))
-    process.stdout.write("prompt > ")
+    process.stdout.write("prompt >")
   }
 })
+}
 
+module.exports = ls
